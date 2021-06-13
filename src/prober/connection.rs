@@ -4,7 +4,6 @@ extern crate threadpool;
 use std::net::SocketAddr;
 use std::net::TcpStream;
 use std::sync::mpsc::channel;
-use std::time::Duration;
 
 use threadpool::ThreadPool;
 
