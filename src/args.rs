@@ -45,7 +45,7 @@ fn dns_resolve(host: &str) -> Vec<IpAddr> {
     addrs
 }
 
-pub fn parse_args() -> Option<Args> {
+pub fn parse_args() -> Args {
     let matches = clap::App::new("Port Scanner")
         .version("0.1.0\n")
         .author("yuchunzhou chunzhou.yu@qq.com")
@@ -120,7 +120,7 @@ pub fn parse_args() -> Option<Args> {
 
     if args.ports.len() == 0 {
         println!("you must choose to scan all ports or some ports!");
-        return None;
+        exit(0);
     }
 
     if matches.is_present("method") {
@@ -132,5 +132,5 @@ pub fn parse_args() -> Option<Args> {
     #[cfg(feature = "debug")]
     println!("{:?}", args);
 
-    Some(args)
+    args
 }
