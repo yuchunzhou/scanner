@@ -28,7 +28,7 @@ impl Prober for Connection {
                 let tx = tx.clone();
                 pool.execute(move || {
                     let saddr = SocketAddr::new(ip, port);
-                    if let Ok(_) = TcpStream::connect_timeout(&saddr, Duration::from_millis(200)) {
+                    if let Ok(_) = TcpStream::connect(saddr) {
                         println!("{}:{} is open", ip, port);
                     }
                     tx.send(1).unwrap();
