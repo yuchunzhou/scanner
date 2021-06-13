@@ -9,14 +9,19 @@ mod args;
 mod prober;
 
 fn main() {
-    let args = args::parse_args().unwrap();
-    match args.method.as_str() {
-        "connection" => {
-            use prober::connection;
-            let connection_prober = connection::Connection;
-            connection_prober.probe_ports(&args);
+    let args = args::parse_args();
+    match args {
+        None => {}
+        Some(args) => {
+            match args.method.as_str() {
+                "connection" => {
+                    use prober::connection;
+                    let connection_prober = connection::Connection;
+                    connection_prober.probe_ports(&args);
+                }
+                "sync" => {}
+                _ => {}
+            }
         }
-        "sync" => {}
-        _ => {}
     }
 }
