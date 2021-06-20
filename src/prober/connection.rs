@@ -23,8 +23,8 @@ impl Prober for Connection {
             for port in args.ports.iter() {
                 let ip = ip.clone();
                 let port = port.clone();
-
                 let tx = tx.clone();
+
                 pool.execute(move || {
                     let saddr = SocketAddr::new(ip, port);
                     if let Ok(_) = TcpStream::connect(saddr) {
