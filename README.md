@@ -1,2 +1,2 @@
 # scanner
-Network port scanner
+A network ports scanner
